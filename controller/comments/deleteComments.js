@@ -24,6 +24,11 @@ exports.deleteComment = (request, response) => {
   const filteredComment = comments.filter(
     (comment) => comment.id !== Number(request.params.id)
   );
-  response.status(200).json(filteredComment);
-  console.log(filteredComment);
+  if (comments.length > filteredComment.length) {
+    response
+      .status(200)
+      .json({ messege: "succesfuly deleted", comments: filteredComment });
+  } else {
+    response.status(400).send("bad request");
+  }
 };

@@ -22,7 +22,6 @@ const comments = [
 exports.getComment = (request, response) => {
   //   const { id } = request.params;
   const randomID = request.params.id;
-  console.log(request.params.d);
 
   const comment = comments.find((comment) => comment.id === Number(randomID));
 
