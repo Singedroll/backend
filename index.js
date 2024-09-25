@@ -1,14 +1,15 @@
-const express = require("express");
-const userRouter = require("./router/user");
-const commentRouter = require("./router/comment");
+import { customersRouter } from "./router/customers.router";
+import express from "express";
 
 const app = express();
+// const { sql } = require("./database");
+import { sql } from "./database";
 
 app.use(express.json());
 
 const port = 8080;
-// app.use("/user", userRouter);
-app.use("/comment", commentRouter);
+
+app.use("/customers", customersRouter);
 
 app.listen(port, () => {
   console.log(`server running at a http://localhost:${port}/`);
