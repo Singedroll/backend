@@ -1,6 +1,7 @@
 import express, { request, response } from "express";
 
 import { sql } from "../database/index";
+import { getOrders, putOrders } from "../controller/orders/orders.controller";
 
 export const customersRouter = express.Router();
 
@@ -51,10 +52,20 @@ customersRouter.delete("/", async (request, response) => {
   }
 });
 
-customersRouter.get("/", async (_request, response) => {
-  const orders = await sql`SELECT * FROM orders`;
-
-  response.status(200).json({
-    data: orders,
-  });
-});
+// customersRouter.get("/orders", async (request, response) => {
+//   try {
+//     const orders = await getOrders();
+//     response.status(200).json({ messege: "success", orders });
+//   } catch (error) {
+//     console.log(error);
+//     response.status(400).json({ message: "bad request" });
+//   }
+// });
+// customersRouter.post("/order", async (request, response) => {
+//   try {
+//     const orders = await putOrders();
+//     response.status(200).json({ message: "success", orders });
+//   } catch (error) {
+//     response.status(400).json({ message: "bad request" });
+//   }
+// });
